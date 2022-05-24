@@ -1,0 +1,9 @@
+C:\Users\j\Documents\Visual Studio 2015\Projects\Lab1(Visual programming)\Lab1(Visual programming)\bin\Debug\Lab1(Visual programming).exe.config
+C:\Users\j\Documents\Visual Studio 2015\Projects\Lab1(Visual programming)\Lab1(Visual programming)\bin\Debug\Lab1(Visual programming).exe
+C:\Users\j\Documents\Visual Studio 2015\Projects\Lab1(Visual programming)\Lab1(Visual programming)\bin\Debug\Lab1(Visual programming).pdb
+C:\Users\j\Documents\Visual Studio 2015\Projects\Lab1(Visual programming)\Lab1(Visual programming)\obj\Debug\Lab1(Visual programming).csprojResolveAssemblyReference.cache
+C:\Users\j\Documents\Visual Studio 2015\Projects\Lab1(Visual programming)\Lab1(Visual programming)\obj\Debug\Lab1_Visual_programming_.Form1.resources
+C:\Users\j\Documents\Visual Studio 2015\Projects\Lab1(Visual programming)\Lab1(Visual programming)\obj\Debug\Lab1_Visual_programming_.Properties.Resources.resources
+C:\Users\j\Documents\Visual Studio 2015\Projects\Lab1(Visual programming)\Lab1(Visual programming)\obj\Debug\Lab1(Visual programming).csproj.GenerateResource.Cache
+C:\Users\j\Documents\Visual Studio 2015\Projects\Lab1(Visual programming)\Lab1(Visual programming)\obj\Debug\Lab1(Visual programming).exe
+C:\Users\j\Documents\Visual Studio 2015\Projects\Lab1(Visual programming)\Lab1(Visual programming)\obj\Debug\Lab1(Visual programming).pdb

@@ -1,0 +1,54 @@
+var selectedColor='';var selectedShape='';var selectedShapeId='';var originalURL='';var iconId='';var iconWidth='';var idCounter=101;const rgb2hex=(rgb)=>`#${rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/).slice(1).map(n=>parseInt(n,10).toString(16).padStart(2,'0')).join('')}`
+$(document).ready(function(){$(document).on("click","#openColorEditorBtn",function(){openModal(colorEditorModal)
+setGlobals();doRequest();});$(document).on("click","#premIconModalBtn",function(){openModal(premIconModal)});$(document).on("click","#id-reset-btn-prem",function(){$("#premIconModal").modal("hide");});$('.colorPicker1').minicolors({control:$('.colorPicker1').attr('data-control')||'hue',defaultValue:$('.colorPicker1').attr('data-defaultValue')||'',format:$('.colorPicker1').attr('data-format')||'hex',keywords:$('.colorPicker1').attr('data-keywords')||'',inline:$('.colorPicker1').attr('data-inline')==='true',letterCase:$('.colorPicker1').attr('data-letterCase')||'lowercase',opacity:$('.colorPicker1').attr('data-opacity'),position:$('.colorPicker1').attr('data-position')||'bottom',swatches:$('.colorPicker1').attr('data-swatches')?$('.colorPicker1').attr('data-swatches').split('|'):[],change:function(hex,opacity){var log;try{log=hex?hex:'transparent';$('#picker-text-field').val(log);if(selectedColor!=""&&selectedShape!=""){changeColorSvg(selectedColor,selectedShape,log,selectedShapeId);changeGradientColor(selectedShapeId,log);}
+if(opacity)log+=', '+opacity;}catch(e){}},theme:'default'});$('#detected-colors').on('click','.id-colors',function(){selectedColor=$(this).attr('data-color');selectedShape=$(this).attr('data-shape');selectedShapeId=$(this).attr('data-id');$(".id-colors").removeClass("item-selected");$(this).addClass("item-selected");});$(document).on("click","#id-reset-btn",function(){resetIconV2();});$(document).on("click","#id-download-btn",function(){var file_name='free_icon_1.svg'
+downloadIcon(file_name);});});function setGlobals(){iconId=$("#imageIconId").val();iconWidth=$("#imageWidth").val();}
+function changeColorSvg(targetColor,selShape,color,shapeId){$('#icon-popup-preview').children('svg').find(selShape).each(function(){if($(this).attr('id')==shapeId){$(this).removeClass();$(this).removeAttr('style');$(this).attr('fill',color);selectedColor=color;}});detectColours();detectGradientFillColor();detectStyleFillColor();}
+function changeGradientColor(itemId,color){$("#icon-popup-preview").find('linearGradient,radialGradient').each(function(){$(this).find('stop').each(function(){if($(this).attr("id")==itemId){$(this).attr('stop-color',color);selectedColor=color;}});});detectColours();detectGradientFillColor();detectStyleFillColor();}
+function resetIconV2(){doRequest();}
+function downloadIcon(filename){var svgData=$('#icon-popup-preview').children('svg')[0].outerHTML;var svgBlob=new Blob([svgData],{type:"image/svg+xml;charset=utf-8"});var svgUrl=URL.createObjectURL(svgBlob);var downloadLink=document.createElement("a");downloadLink.href=svgUrl;downloadLink.download=filename;document.body.appendChild(downloadLink);downloadLink.click();document.body.removeChild(downloadLink);}
+function doRequest(){var payload={type:'svg',icon_id:iconId};$.ajax({url:'/icon/v2/download',headers:{'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content'),},method:'GET',data:payload,success:function(data){if(data==''){return false;}
+addSVGtoDom(data);setElementIDs();detectColours();detectGradientFillColor();detectStyleFillColor();}});}
+function detectColours(){var data=$("#icon-popup-preview").html();var html='';$(data).find('path').each(function(){var color=identifyColor(this);var id=$(this).attr('id');if(color!=undefined){html+="<div class='id-colors' data-shape='path' data-id="+id+" data-color="+color+
+" style='height:20px;width:20px;background-color:"+color+
+";padding:5px;margin:10px;cursor:pointer;border:1px solid black;'></div>";}});$(data).find('rect').each(function(){var color=identifyColor(this);var id=$(this).attr('id');if(color!=undefined){html+="<div class='id-colors' data-shape='rect' data-id="+id+" data-color="+color+
+" style='height:20px;width:20px;background-color:"+color+
+";padding:5px;margin:10px;cursor:pointer;border:1px solid black;'></div>";}});$(data).find('polygon').each(function(){var color=identifyColor(this);var id=$(this).attr('id');if(color!=undefined){html+="<div class='id-colors' data-shape='polygon' data-id="+id+" data-color="+color+
+" style='height:20px;width:20px;background-color:"+color+
+";padding:5px;margin:10px;cursor:pointer;border:1px solid black;'></div>";}});$(data).find('circle').each(function(){var color=identifyColor(this);var id=$(this).attr('id');if(color!=undefined){html+="<div class='id-colors' data-shape='circle' data-id="+id+" data-color="+color+
+" style='height:20px;width:20px;background-color:"+color+
+";padding:5px;margin:10px;cursor:pointer;border:1px solid black;'></div>";}});$(data).find('ellipse').each(function(){var color=identifyColor(this);var id=$(this).attr('id');if(color!=undefined){html+="<div class='id-colors' data-shape='ellipse' data-id="+id+" data-color="+color+
+" style='height:20px;width:20px;background-color:"+color+
+";padding:5px;margin:10px;cursor:pointer;border:1px solid black;'></div>";}});$(data).find('polyline').each(function(){var color=identifyColor(this);var id=$(this).attr('id');if(color!=undefined){html+="<div class='id-colors' data-shape='polyline' data-id="+id+" data-color="+color+
+" style='height:20px;width:20px;background-color:"+color+
+";padding:5px;margin:10px;cursor:pointer;border:1px solid black;'></div>";}});$("#detected-colors").html(html);}
+function addSVGtoDom(data){$("#icon-popup-preview").html(data);$("#version-1").html(data);}
+function setElementIDs(){$("#icon-popup-preview").find('path,rect,polygon,circle,ellipse,polyline').each(function(){if($(this).attr('id')==undefined){$(this).attr("id","id_"+idCounter);idCounter++;}});$("#icon-popup-preview").find('linearGradient,radialGradient').each(function(){$(this).find('stop').each(function(){if($(this).attr('id')==undefined){$(this).attr("id","id_"+idCounter);idCounter++;}});});}
+function detectGradientFillColor(){var html='';$("#icon-popup-preview").find('linearGradient,radialGradient').each(function(){$(this).find('stop').each(function(){var color=$(this).attr('stop-color');var id=$(this).attr("id");html+="<div class='id-colors' data-shape='polyline' data-id="+id+" data-color="+color+
+" style='height:20px;width:20px;background-color:"+color+
+";padding:5px;margin:10px;cursor:pointer;border:1px solid black;'></div>";});});$("#detected-colors").append(html);}
+function validateColor(color){var looking='url';if(color!=undefined&&color.indexOf(looking)!=-1){return undefined;}
+return color;}
+function detectStyleFillColor(){var p_html='';$("#icon-popup-preview").find('path').each(function(){var color=identifyColorCSSClasses(this);var id=$(this).attr("id");if(color!=""&&color!=undefined){p_html+="<div class='id-colors' data-shape='path' data-id="+id+" data-color="+color+
+" style='height:20px;width:20px;background-color:"+color+
+";padding:5px;margin:10px;cursor:pointer;border:1px solid black;'></div>";}});$("#icon-popup-preview").find('rect').each(function(){var color=identifyColorCSSClasses(this);var id=$(this).attr("id");if(color!=""&&color!=undefined){p_html+="<div class='id-colors' data-shape='rect' data-id="+id+" data-color="+color+
+" style='height:20px;width:20px;background-color:"+color+
+";padding:5px;margin:10px;cursor:pointer;border:1px solid black;'></div>";}});$("#icon-popup-preview").find('polygon').each(function(){var color=identifyColorCSSClasses(this);var id=$(this).attr("id");if(color!=""&&color!=undefined){p_html+="<div class='id-colors' data-shape='polygon' data-id="+id+" data-color="+color+
+" style='height:20px;width:20px;background-color:"+color+
+";padding:5px;margin:10px;cursor:pointer;border:1px solid black;'></div>";}});$("#icon-popup-preview").find('circle').each(function(){var color=identifyColorCSSClasses(this);var id=$(this).attr("id");if(color!=""&&color!=undefined){p_html+="<div class='id-colors' data-shape='circle' data-id="+id+" data-color="+color+
+" style='height:20px;width:20px;background-color:"+color+
+";padding:5px;margin:10px;cursor:pointer;border:1px solid black;'></div>";}});$("#icon-popup-preview").find('ellipse').each(function(){var color=identifyColorCSSClasses(this);var id=$(this).attr("id");if(color!=""&&color!=undefined){p_html+="<div class='id-colors' data-shape='ellipse' data-id="+id+" data-color="+color+
+" style='height:20px;width:20px;background-color:"+color+
+";padding:5px;margin:10px;cursor:pointer;border:1px solid black;'></div>";}});$("#icon-popup-preview").find('polyline').each(function(){var color=identifyColorCSSClasses(this);var id=$(this).attr("id");if(color!=""&&color!=undefined){p_html+="<div class='id-colors' data-shape='polyline' data-id="+id+" data-color="+color+
+" style='height:20px;width:20px;background-color:"+color+
+";padding:5px;margin:10px;cursor:pointer;border:1px solid black;'></div>";}});return p_html!=''?$("#detected-colors").append(p_html):'';}
+function identifyColor(element){var color=$(element).attr('fill');if(color==undefined||color==""){color=$(element).css('fill');color=validateColor(color);if(color!=""&&color!=undefined){color=rgb2hex(color);}}
+var detClass=$(element).attr('class');if((color==undefined||color=="")&&detClass==undefined){$(element).attr('fill','#000000');color=$(element).attr('fill');}
+return validateColor(color);}
+function identifyColorCSSClasses(element){var detClass=$(element).attr('class');if(detClass!=""&&detClass!=undefined){var color=$("."+detClass).css('fill');var stroke=$("."+detClass).css('stroke');color=validateColor(color);if(color!=""&&color!="none"&&color!=undefined){color=rgb2hex(color);}else{$(element).attr('fill','#000000');color=$(element).attr('fill');}
+return validateColor(color);}
+return undefined;}
+function isFillCSSClasses(element){var detClass=$(element).attr('class');if(detClass!=""&&detClass!=undefined){var color=$("."+detClass).css('fill');var stroke=$("."+detClass).css('stroke');color=validateColor(color);if(color!=""&&color!="none"&&color!=undefined){return 0;}else{if(stroke!=""&&stroke!="none"&&stroke!=undefined){return 1;}}}
+return-1;}
+function openListColorEditor(){openModal(colorEditorModalList)
+setGlobals();doRequest();}

@@ -1,0 +1,21 @@
+C:\Взуальне програмування\Lab3_O\Lab3_O\bin\Debug\Lab3_O.exe.config
+C:\Взуальне програмування\Lab3_O\Lab3_O\bin\Debug\Lab3_O.exe
+C:\Взуальне програмування\Lab3_O\Lab3_O\bin\Debug\Lab3_O.pdb
+C:\Взуальне програмування\Lab3_O\Lab3_O\obj\Debug\Lab3_O.csproj.AssemblyReference.cache
+C:\Взуальне програмування\Lab3_O\Lab3_O\obj\Debug\Lab3_O.Form1.resources
+C:\Взуальне програмування\Lab3_O\Lab3_O\obj\Debug\Lab3_O.Properties.Resources.resources
+C:\Взуальне програмування\Lab3_O\Lab3_O\obj\Debug\Lab3_O.csproj.GenerateResource.cache
+C:\Взуальне програмування\Lab3_O\Lab3_O\obj\Debug\Lab3_O.csproj.CoreCompileInputs.cache
+C:\Взуальне програмування\Lab3_O\Lab3_O\obj\Debug\Lab3_O.exe
+C:\Взуальне програмування\Lab3_O\Lab3_O\obj\Debug\Lab3_O.pdb
+C:\Взуальне програмування\Lab3_O\Lab3_O\obj\Debug\Lab3_O.Form2.resources
+C:\Users\j\Documents\Visual Studio 2015\Projects\Lab3_O\Lab3_O\bin\Debug\Lab3_O.exe.config
+C:\Users\j\Documents\Visual Studio 2015\Projects\Lab3_O\Lab3_O\obj\Debug\Lab3_O.exe
+C:\Users\j\Documents\Visual Studio 2015\Projects\Lab3_O\Lab3_O\obj\Debug\Lab3_O.pdb
+C:\Users\j\Documents\Visual Studio 2015\Projects\Lab3_O\Lab3_O\bin\Debug\Lab3_O.exe
+C:\Users\j\Documents\Visual Studio 2015\Projects\Lab3_O\Lab3_O\bin\Debug\Lab3_O.pdb
+C:\Users\j\Documents\Visual Studio 2015\Projects\Lab3_O\Lab3_O\obj\Debug\Lab3_O.csprojResolveAssemblyReference.cache
+C:\Users\j\Documents\Visual Studio 2015\Projects\Lab3_O\Lab3_O\obj\Debug\Lab3_O.Form1.resources
+C:\Users\j\Documents\Visual Studio 2015\Projects\Lab3_O\Lab3_O\obj\Debug\Lab3_O.Form2.resources
+C:\Users\j\Documents\Visual Studio 2015\Projects\Lab3_O\Lab3_O\obj\Debug\Lab3_O.Properties.Resources.resources
+C:\Users\j\Documents\Visual Studio 2015\Projects\Lab3_O\Lab3_O\obj\Debug\Lab3_O.csproj.GenerateResource.Cache

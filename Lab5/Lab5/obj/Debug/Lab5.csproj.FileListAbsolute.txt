@@ -1,0 +1,19 @@
+C:\Взуальне програмування\Lab5\Lab5\bin\Debug\Lab5.exe.config
+C:\Взуальне програмування\Lab5\Lab5\bin\Debug\Lab5.exe
+C:\Взуальне програмування\Lab5\Lab5\bin\Debug\Lab5.pdb
+C:\Взуальне програмування\Lab5\Lab5\obj\Debug\Lab5.csproj.AssemblyReference.cache
+C:\Взуальне програмування\Lab5\Lab5\obj\Debug\Lab5.Form1.resources
+C:\Взуальне програмування\Lab5\Lab5\obj\Debug\Lab5.Properties.Resources.resources
+C:\Взуальне програмування\Lab5\Lab5\obj\Debug\Lab5.csproj.GenerateResource.cache
+C:\Взуальне програмування\Lab5\Lab5\obj\Debug\Lab5.csproj.CoreCompileInputs.cache
+C:\Взуальне програмування\Lab5\Lab5\obj\Debug\Lab5.exe
+C:\Взуальне програмування\Lab5\Lab5\obj\Debug\Lab5.pdb
+C:\Users\j\Documents\Visual Studio 2015\Projects\Lab5\Lab5\bin\Debug\Lab5.exe.config
+C:\Users\j\Documents\Visual Studio 2015\Projects\Lab5\Lab5\obj\Debug\Lab5.exe
+C:\Users\j\Documents\Visual Studio 2015\Projects\Lab5\Lab5\obj\Debug\Lab5.pdb
+C:\Users\j\Documents\Visual Studio 2015\Projects\Lab5\Lab5\bin\Debug\Lab5.exe
+C:\Users\j\Documents\Visual Studio 2015\Projects\Lab5\Lab5\bin\Debug\Lab5.pdb
+C:\Users\j\Documents\Visual Studio 2015\Projects\Lab5\Lab5\obj\Debug\Lab5.Form1.resources
+C:\Users\j\Documents\Visual Studio 2015\Projects\Lab5\Lab5\obj\Debug\Lab5.Properties.Resources.resources
+C:\Users\j\Documents\Visual Studio 2015\Projects\Lab5\Lab5\obj\Debug\Lab5.csproj.GenerateResource.Cache
+C:\Users\j\Documents\Visual Studio 2015\Projects\Lab5\Lab5\obj\Debug\Lab5.csprojResolveAssemblyReference.cache

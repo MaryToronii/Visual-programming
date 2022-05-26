@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   
+           
+           >
+
+  <xs:element name="passengers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="passenger" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="full_name" type="xs:string" />
+              <xs:element name="count_thing" type="xs:int" />
+              <xs:element name="weight_1" type="xs:int" />
+              <xs:element name="weight_2" type="xs:int" />
+              <xs:element name="weight_3" type="xs:int" />
+              <xs:element name="number" type="xs:int" />
+             
+              <xs:element name="date" type="xs:string" />
+              <xs:element name="time" type="xs:string" />
+              <xs:element name="term" type="xs:string" />
+              <xs:element name="destination" type="xs:string" />
+            </xs:sequence></xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

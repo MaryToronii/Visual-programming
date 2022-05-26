@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<passengers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <passenger>
+    <full_name>Тороній Марія</full_name>
+    <count_thing>3</count_thing>
+    <weight_1>1</weight_1>
+    <weight_2>2</weight_2>
+    <weight_3>4</weight_3>
+    <number>1</number>
+    <date>01.06.2022</date>
+    <time>10:00</time>
+    <term>1:00</term>
+    <destination>Барселона</destination>
+  </passenger>
+  <passenger>
+    <full_name>Таня Сідельник</full_name>
+    <count_thing>1</count_thing>
+    <weight_1>15</weight_1>
+    <weight_2>0</weight_2>
+    <weight_3>0</weight_3>
+    <number>2</number>
+    <date>11.02.2022</date>
+    <time>17:00</time>
+    <term>2:30</term>
+    <destination>Денвер</destination>
+  </passenger>
+  <passenger>
+    <full_name>Денис Тхорів</full_name>
+    <count_thing>2</count_thing>
+    <weight_1>1</weight_1>
+    <weight_2>3</weight_2>
+    <weight_3>0</weight_3>
+    <number>3</number>
+    <date>12.09.2022</date>
+    <time>10:20</time>
+    <term>4:20</term>
+    <destination>Лондон</destination>
+  </passenger>
+  <passenger>
+    <full_name>Теон</full_name>
+    <count_thing>3</count_thing>
+    <weight_1>2</weight_1>
+    <weight_2>2</weight_2>
+    <weight_3>5</weight_3>
+    <number>4</number>
+    <date>01.06.2022</date>
+    <time>10:00</time>
+    <term>1:00</term>
+    <destination>Барселона</destination>
+  </passenger>
+  <passenger>
+    <full_name>Пасажир Х</full_name>
+    <count_thing>1</count_thing>
+    <weight_1>6</weight_1>
+    <weight_2>0</weight_2>
+    <weight_3>0</weight_3>
+    <number>5</number>
+    <date>01.06.2022</date>
+    <time>10:00</time>
+    <term>10:00</term>
+    <destination>Париж</destination>
+  </passenger>
+  <passenger>
+    <full_name>Віктор Пабирівський</full_name>
+    <count_thing>3</count_thing>
+    <weight_1>2</weight_1>
+    <weight_2>5</weight_2>
+    <weight_3>7</weight_3>
+    <number>6</number>
+    <date>01.06.2022</date>
+    <time>12:00</time>
+    <term>2:00</term>
+    <destination>Токіо</destination>
+  </passenger>
+</passengers>

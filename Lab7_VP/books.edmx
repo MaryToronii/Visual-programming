@@ -1,0 +1,325 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище BooksModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AllBooks">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameID" Type="int" />
+          <Property Name="Present" Type="bit" />
+        </EntityType>
+        <EntityType Name="BookNames">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Photo" Type="char" MaxLength="300" />
+          <Property Name="Name" Type="char" MaxLength="20" />
+          <Property Name="Athor" Type="char" MaxLength="20" />
+          <Property Name="Genre" Type="nchar" MaxLength="20" />
+          <Property Name="Year" Type="int" />
+          <Property Name="Publishing" Type="char" MaxLength="20" />
+          <Property Name="ShortDescription" Type="text" />
+          <Property Name="Cost" Type="float" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Count" Type="int" />
+        </EntityType>
+        <EntityType Name="Reaaders">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="char" MaxLength="100" />
+          <Property Name="Adress" Type="nchar" MaxLength="100" />
+          <Property Name="Birth" Type="date" />
+          <Property Name="Number" Type="char" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TakenBooks">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookID" Type="int" Nullable="false" />
+          <Property Name="ReaderID" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="date" Nullable="false" />
+          <Property Name="EndDate" Type="date" />
+        </EntityType>
+        <Association Name="FK_AllBooks_BookNames">
+          <End Role="BookNames" Type="Self.BookNames" Multiplicity="0..1" />
+          <End Role="AllBooks" Type="Self.AllBooks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BookNames">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AllBooks">
+              <PropertyRef Name="NameID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TakenBooks_AllBooks">
+          <End Role="AllBooks" Type="Self.AllBooks" Multiplicity="1" />
+          <End Role="TakenBooks" Type="Self.TakenBooks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AllBooks">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TakenBooks">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TakenBooks_Reaaders">
+          <End Role="Reaaders" Type="Self.Reaaders" Multiplicity="1" />
+          <End Role="TakenBooks" Type="Self.TakenBooks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reaaders">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TakenBooks">
+              <PropertyRef Name="ReaderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище BooksModelContainer">
+          <EntitySet Name="AllBooks" EntityType="Self.AllBooks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BookNames" EntityType="Self.BookNames" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reaaders" EntityType="Self.Reaaders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TakenBooks" EntityType="Self.TakenBooks" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AllBooks_BookNames" Association="Self.FK_AllBooks_BookNames">
+            <End Role="BookNames" EntitySet="BookNames" />
+            <End Role="AllBooks" EntitySet="AllBooks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TakenBooks_AllBooks" Association="Self.FK_TakenBooks_AllBooks">
+            <End Role="AllBooks" EntitySet="AllBooks" />
+            <End Role="TakenBooks" EntitySet="TakenBooks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TakenBooks_Reaaders" Association="Self.FK_TakenBooks_Reaaders">
+            <End Role="Reaaders" EntitySet="Reaaders" />
+            <End Role="TakenBooks" EntitySet="TakenBooks" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BooksModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AllBooks">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameID" Type="Int32" />
+          <Property Name="Present" Type="Boolean" />
+          <NavigationProperty Name="BookNames" Relationship="Self.FK_AllBooks_BookNames" FromRole="AllBooks" ToRole="BookNames" />
+          <NavigationProperty Name="TakenBooks" Relationship="Self.FK_TakenBooks_AllBooks" FromRole="AllBooks" ToRole="TakenBooks" />
+        </EntityType>
+        <EntityType Name="BookNames">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Photo" Type="String" MaxLength="300" FixedLength="true" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="Athor" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="Genre" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="Publishing" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="ShortDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Cost" Type="Double" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Count" Type="Int32" />
+          <NavigationProperty Name="AllBooks" Relationship="Self.FK_AllBooks_BookNames" FromRole="BookNames" ToRole="AllBooks" />
+        </EntityType>
+        <EntityType Name="Reaaders">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="true" Unicode="false" />
+          <Property Name="Adress" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Birth" Type="DateTime" Precision="0" />
+          <Property Name="Number" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="TakenBooks" Relationship="Self.FK_TakenBooks_Reaaders" FromRole="Reaaders" ToRole="TakenBooks" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TakenBooks">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookID" Type="Int32" Nullable="false" />
+          <Property Name="ReaderID" Type="Int32" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="AllBooks" Relationship="Self.FK_TakenBooks_AllBooks" FromRole="TakenBooks" ToRole="AllBooks" />
+          <NavigationProperty Name="Reaaders" Relationship="Self.FK_TakenBooks_Reaaders" FromRole="TakenBooks" ToRole="Reaaders" />
+        </EntityType>
+        <Association Name="FK_AllBooks_BookNames">
+          <End Role="BookNames" Type="Self.BookNames" Multiplicity="0..1" />
+          <End Role="AllBooks" Type="Self.AllBooks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BookNames">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AllBooks">
+              <PropertyRef Name="NameID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TakenBooks_AllBooks">
+          <End Role="AllBooks" Type="Self.AllBooks" Multiplicity="1" />
+          <End Role="TakenBooks" Type="Self.TakenBooks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AllBooks">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TakenBooks">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TakenBooks_Reaaders">
+          <End Role="Reaaders" Type="Self.Reaaders" Multiplicity="1" />
+          <End Role="TakenBooks" Type="Self.TakenBooks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reaaders">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TakenBooks">
+              <PropertyRef Name="ReaderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BooksEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AllBooks" EntityType="Self.AllBooks" />
+          <EntitySet Name="BookNames" EntityType="Self.BookNames" />
+          <EntitySet Name="Reaaders" EntityType="Self.Reaaders" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TakenBooks" EntityType="Self.TakenBooks" />
+          <AssociationSet Name="FK_AllBooks_BookNames" Association="Self.FK_AllBooks_BookNames">
+            <End Role="BookNames" EntitySet="BookNames" />
+            <End Role="AllBooks" EntitySet="AllBooks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TakenBooks_AllBooks" Association="Self.FK_TakenBooks_AllBooks">
+            <End Role="AllBooks" EntitySet="AllBooks" />
+            <End Role="TakenBooks" EntitySet="TakenBooks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TakenBooks_Reaaders" Association="Self.FK_TakenBooks_Reaaders">
+            <End Role="Reaaders" EntitySet="Reaaders" />
+            <End Role="TakenBooks" EntitySet="TakenBooks" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище BooksModelContainer" CdmEntityContainer="BooksEntities">
+          <EntitySetMapping Name="AllBooks">
+            <EntityTypeMapping TypeName="BooksModel.AllBooks">
+              <MappingFragment StoreEntitySet="AllBooks">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NameID" ColumnName="NameID" />
+                <ScalarProperty Name="Present" ColumnName="Present" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BookNames">
+            <EntityTypeMapping TypeName="BooksModel.BookNames">
+              <MappingFragment StoreEntitySet="BookNames">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Athor" ColumnName="Athor" />
+                <ScalarProperty Name="Genre" ColumnName="Genre" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Publishing" ColumnName="Publishing" />
+                <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reaaders">
+            <EntityTypeMapping TypeName="BooksModel.Reaaders">
+              <MappingFragment StoreEntitySet="Reaaders">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="Birth" ColumnName="Birth" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BooksModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TakenBooks">
+            <EntityTypeMapping TypeName="BooksModel.TakenBooks">
+              <MappingFragment StoreEntitySet="TakenBooks">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BookID" ColumnName="BookID" />
+                <ScalarProperty Name="ReaderID" ColumnName="ReaderID" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

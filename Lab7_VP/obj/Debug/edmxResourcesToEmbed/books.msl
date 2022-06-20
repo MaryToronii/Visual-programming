@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище BooksModelContainer" CdmEntityContainer="BooksEntities">
+    <EntitySetMapping Name="AllBooks">
+      <EntityTypeMapping TypeName="BooksModel.AllBooks">
+        <MappingFragment StoreEntitySet="AllBooks">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NameID" ColumnName="NameID" />
+          <ScalarProperty Name="Present" ColumnName="Present" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BookNames">
+      <EntityTypeMapping TypeName="BooksModel.BookNames">
+        <MappingFragment StoreEntitySet="BookNames">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Athor" ColumnName="Athor" />
+          <ScalarProperty Name="Genre" ColumnName="Genre" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="Publishing" ColumnName="Publishing" />
+          <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reaaders">
+      <EntityTypeMapping TypeName="BooksModel.Reaaders">
+        <MappingFragment StoreEntitySet="Reaaders">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Adress" ColumnName="Adress" />
+          <ScalarProperty Name="Birth" ColumnName="Birth" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="BooksModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TakenBooks">
+      <EntityTypeMapping TypeName="BooksModel.TakenBooks">
+        <MappingFragment StoreEntitySet="TakenBooks">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BookID" ColumnName="BookID" />
+          <ScalarProperty Name="ReaderID" ColumnName="ReaderID" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,15 @@
+C:\Users\j\Documents\Visual Studio 2019\Projects\Lab7_VP\Lab7_VP\bin\Debug\Lab7_VP.exe.config
+C:\Users\j\Documents\Visual Studio 2019\Projects\Lab7_VP\Lab7_VP\bin\Debug\Lab7_VP.exe
+C:\Users\j\Documents\Visual Studio 2019\Projects\Lab7_VP\Lab7_VP\bin\Debug\Lab7_VP.pdb
+C:\Users\j\Documents\Visual Studio 2019\Projects\Lab7_VP\Lab7_VP\bin\Debug\EntityFramework.dll
+C:\Users\j\Documents\Visual Studio 2019\Projects\Lab7_VP\Lab7_VP\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\j\Documents\Visual Studio 2019\Projects\Lab7_VP\Lab7_VP\bin\Debug\EntityFramework.xml
+C:\Users\j\Documents\Visual Studio 2019\Projects\Lab7_VP\Lab7_VP\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\j\Documents\Visual Studio 2019\Projects\Lab7_VP\Lab7_VP\obj\Debug\Lab7_VP.csproj.AssemblyReference.cache
+C:\Users\j\Documents\Visual Studio 2019\Projects\Lab7_VP\Lab7_VP\obj\Debug\Lab7_VP.Form1.resources
+C:\Users\j\Documents\Visual Studio 2019\Projects\Lab7_VP\Lab7_VP\obj\Debug\Lab7_VP.Properties.Resources.resources
+C:\Users\j\Documents\Visual Studio 2019\Projects\Lab7_VP\Lab7_VP\obj\Debug\Lab7_VP.csproj.GenerateResource.cache
+C:\Users\j\Documents\Visual Studio 2019\Projects\Lab7_VP\Lab7_VP\obj\Debug\Lab7_VP.csproj.CoreCompileInputs.cache
+C:\Users\j\Documents\Visual Studio 2019\Projects\Lab7_VP\Lab7_VP\obj\Debug\Lab7_VP.csproj.CopyComplete
+C:\Users\j\Documents\Visual Studio 2019\Projects\Lab7_VP\Lab7_VP\obj\Debug\Lab7_VP.exe
+C:\Users\j\Documents\Visual Studio 2019\Projects\Lab7_VP\Lab7_VP\obj\Debug\Lab7_VP.pdb

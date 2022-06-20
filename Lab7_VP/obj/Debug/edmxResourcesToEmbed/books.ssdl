@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище BooksModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AllBooks">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameID" Type="int" />
+    <Property Name="Present" Type="bit" />
+  </EntityType>
+  <EntityType Name="BookNames">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Photo" Type="char" MaxLength="300" />
+    <Property Name="Name" Type="char" MaxLength="20" />
+    <Property Name="Athor" Type="char" MaxLength="20" />
+    <Property Name="Genre" Type="nchar" MaxLength="20" />
+    <Property Name="Year" Type="int" />
+    <Property Name="Publishing" Type="char" MaxLength="20" />
+    <Property Name="ShortDescription" Type="text" />
+    <Property Name="Cost" Type="float" />
+    <Property Name="Date" Type="date" />
+    <Property Name="Count" Type="int" />
+  </EntityType>
+  <EntityType Name="Reaaders">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="char" MaxLength="100" />
+    <Property Name="Adress" Type="nchar" MaxLength="100" />
+    <Property Name="Birth" Type="date" />
+    <Property Name="Number" Type="char" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TakenBooks">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BookID" Type="int" Nullable="false" />
+    <Property Name="ReaderID" Type="int" Nullable="false" />
+    <Property Name="StartDate" Type="date" Nullable="false" />
+    <Property Name="EndDate" Type="date" />
+  </EntityType>
+  <Association Name="FK_AllBooks_BookNames">
+    <End Role="BookNames" Type="Self.BookNames" Multiplicity="0..1" />
+    <End Role="AllBooks" Type="Self.AllBooks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BookNames">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AllBooks">
+        <PropertyRef Name="NameID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TakenBooks_AllBooks">
+    <End Role="AllBooks" Type="Self.AllBooks" Multiplicity="1" />
+    <End Role="TakenBooks" Type="Self.TakenBooks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AllBooks">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TakenBooks">
+        <PropertyRef Name="BookID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TakenBooks_Reaaders">
+    <End Role="Reaaders" Type="Self.Reaaders" Multiplicity="1" />
+    <End Role="TakenBooks" Type="Self.TakenBooks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reaaders">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TakenBooks">
+        <PropertyRef Name="ReaderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище BooksModelContainer">
+    <EntitySet Name="AllBooks" EntityType="Self.AllBooks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BookNames" EntityType="Self.BookNames" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Reaaders" EntityType="Self.Reaaders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TakenBooks" EntityType="Self.TakenBooks" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_AllBooks_BookNames" Association="Self.FK_AllBooks_BookNames">
+      <End Role="BookNames" EntitySet="BookNames" />
+      <End Role="AllBooks" EntitySet="AllBooks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TakenBooks_AllBooks" Association="Self.FK_TakenBooks_AllBooks">
+      <End Role="AllBooks" EntitySet="AllBooks" />
+      <End Role="TakenBooks" EntitySet="TakenBooks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TakenBooks_Reaaders" Association="Self.FK_TakenBooks_Reaaders">
+      <End Role="Reaaders" EntitySet="Reaaders" />
+      <End Role="TakenBooks" EntitySet="TakenBooks" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
